@@ -206,6 +206,82 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
   .kv div{grid-template-columns:1fr;gap:4px}
 }
 @media (prefers-reduced-motion:no-preference){ .meter i,.hbar i{transition:width .9s cubic-bezier(.2,.7,.2,1)} }
+
+/* Gráficos por formulario (panel lateral) */
+:root{--c-pos:#2e7a4f;--c-mid:#c8901f;--c-neg:#b3261e;--c-na:#a3a8b0;--l-1:#b4532a;--l-2:#e2a382;--l-3:#bfc3c9;--l-4:#86a9dc;--l-5:#2f5aa6;--c-cat:#b88a2e;--seg-ink:#ffffff}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){--c-pos:#5cb582;--c-mid:#d4a03f;--c-neg:#e0655c;--c-na:#8d949e;--l-1:#e07b52;--l-2:#f0b596;--l-3:#9aa1aa;--l-4:#a9c4f2;--l-5:#5f8fe0;--c-cat:#d4a548;--seg-ink:#0e1520}}
+:root[data-theme="dark"]{--c-pos:#5cb582;--c-mid:#d4a03f;--c-neg:#e0655c;--c-na:#8d949e;--l-1:#e07b52;--l-2:#f0b596;--l-3:#9aa1aa;--l-4:#a9c4f2;--l-5:#5f8fe0;--c-cat:#d4a548;--seg-ink:#0e1520}
+.gbtn{margin-top:10px;display:inline-flex;align-items:center;gap:8px;font:600 12.5px var(--f-body);color:var(--ink);background:var(--surface);border:1px solid var(--line);padding:6px 13px 6px 10px;border-radius:999px;cursor:pointer;transition:border-color .15s,background .15s}
+.gbtn:hover{border-color:var(--gold);background:var(--gold-soft)}
+.gbtn svg{width:15px;height:15px;stroke:var(--gold);fill:none;stroke-width:2;stroke-linecap:round}
+.gbtn span{font:500 11.5px var(--f-mono);color:var(--muted)}
+.gnote{margin-top:10px;font-size:12.5px;color:var(--muted);font-style:italic}
+dialog.drw{position:fixed;inset:0 0 0 auto;margin:0;height:100vh;height:100dvh;max-height:none;width:min(780px,100vw);max-width:100vw;padding:0;border:0;border-left:1px solid var(--line);background:var(--bg);color:var(--ink);box-shadow:-24px 0 60px rgba(0,0,0,.25)}
+dialog.drw[open]{display:flex;flex-direction:column}
+dialog.drw::backdrop{background:rgba(8,14,24,.55)}
+@media (prefers-reduced-motion:no-preference){dialog.drw[open]{animation:drwIn .3s cubic-bezier(.2,.8,.2,1)}}
+@keyframes drwIn{from{transform:translateX(48px);opacity:0}}
+.drw-h{background:radial-gradient(600px 220px at 90% -40%, var(--band-2), transparent 70%), var(--band);color:var(--band-ink);padding:22px max(24px, env(safe-area-inset-right,0px)) 20px 24px;padding-top:max(22px, env(safe-area-inset-top,0px));position:relative;flex:none}
+.drw-h .k{font-size:11.5px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);font-weight:600}
+.drw-h h2{font-size:24px;line-height:1.2;margin:6px 48px 0 0;color:var(--band-ink)}
+.drw-h .meta{display:flex;flex-wrap:wrap;gap:6px 20px;font:500 12px var(--f-mono);color:var(--band-muted);margin-top:12px}
+.drw-h .meta b{color:var(--band-ink);font-weight:500}
+.drw-x{position:absolute;top:max(16px, env(safe-area-inset-top,0px));right:max(16px, env(safe-area-inset-right,0px));width:38px;height:38px;border-radius:50%;border:1px solid rgba(242,237,227,.22);background:rgba(255,255,255,.04);color:var(--band-ink);cursor:pointer;display:grid;place-items:center}
+.drw-x:hover{background:rgba(255,255,255,.12)}
+.drw-x svg{width:16px;height:16px;stroke:currentColor;stroke-width:2.2;stroke-linecap:round}
+.drw-tools{display:flex;gap:10px 14px;align-items:center;flex-wrap:wrap;padding:12px 24px;border-bottom:1px solid var(--line);background:var(--surface);flex:none}
+.seg{display:inline-flex;border:1px solid var(--line);border-radius:999px;padding:2px;background:var(--surface-2)}
+.seg button{font:600 12px var(--f-body);color:var(--muted);background:none;border:0;border-radius:999px;padding:5px 12px;cursor:pointer;white-space:nowrap}
+.seg button[aria-pressed="true"]{background:var(--surface);color:var(--ink);box-shadow:0 1px 2px rgba(0,0,0,.12)}
+.drw-tools .src{margin-left:auto;font-size:12px;color:var(--muted)}
+.drw-b{overflow-y:auto;flex:1;padding:6px 24px 48px;padding-bottom:max(48px, env(safe-area-inset-bottom,0px));overscroll-behavior:contain}
+.pano{display:grid;grid-template-columns:auto minmax(0,1fr);gap:8px 24px;align-items:center;padding:20px 0 22px;border-bottom:2px solid var(--ink)}
+.pano .hn{font-family:var(--f-display);font-size:46px;line-height:1}
+.pano .hn small{font-size:22px;color:var(--muted)}
+.pano .hl{font-size:13px;color:var(--muted);max-width:30ch}
+.pano .sbar{height:14px;margin-top:0}
+.pano .wide{grid-column:1 / -1}
+.grp-h{display:flex;justify-content:space-between;align-items:baseline;gap:12px;margin:26px 0 2px;padding-bottom:8px;border-bottom:1px solid var(--line)}
+.grp-h h3{font-size:18px}
+.grp-h span{font:500 12px var(--f-mono);color:var(--muted);white-space:nowrap}
+.qc{padding:16px 0 18px;border-bottom:1px solid var(--line)}
+.qc:last-child{border-bottom:0}
+.qc .qt{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:14px;align-items:start;font-size:14.5px;line-height:1.45}
+.qc .qt .kp{font:600 13px var(--f-mono);color:var(--ink);white-space:nowrap;text-align:right}
+.qc .qt .kp small{display:block;font:500 10.5px var(--f-body);letter-spacing:.06em;color:var(--muted);text-transform:uppercase}
+.sbar{display:flex;gap:2px;height:24px;margin-top:10px}
+.sbar .sg{min-width:3px;display:flex;align-items:center;justify-content:center;font:600 11px var(--f-mono);color:var(--seg-ink);overflow:hidden;white-space:nowrap;background:var(--c)}
+.sbar .sg:first-child{border-radius:4px 0 0 4px}.sbar .sg:last-child{border-radius:0 4px 4px 0}.sbar .sg:only-child{border-radius:4px}
+.sbar .sg:hover{filter:brightness(1.08)}
+.sbar.empty{background:var(--surface-2);border-radius:4px}
+.lg{display:flex;flex-wrap:wrap;gap:4px 16px;margin-top:8px;font-size:12.5px;color:var(--muted)}
+.lg span{display:inline-flex;align-items:center;gap:6px}
+.lg i{width:10px;height:10px;border-radius:2px;background:var(--c);flex:none}
+.lg b{font:500 12px var(--f-mono);color:var(--ink)}
+.cb{display:grid;gap:7px;margin-top:10px;font-size:13px}
+.ci{display:grid;grid-template-columns:minmax(120px,230px) minmax(0,1fr) 96px;grid-template-areas:"l b n";gap:4px 12px;align-items:center}
+.ci>span{grid-area:l}.ci .bt{grid-area:b}.ci em{grid-area:n}
+.cb .bt{height:14px;background:var(--surface-2);border-radius:0 4px 4px 0;overflow:hidden}
+.cb .bt i{display:block;height:100%;background:var(--c-cat);border-radius:0 4px 4px 0}
+.cb em{font:500 12px var(--f-mono);font-style:normal;text-align:right;color:var(--ink)}
+.cb em small{color:var(--muted)}
+.empty-st{padding:48px 8px;text-align:center;color:var(--muted)}
+.empty-st b{display:block;font-family:var(--f-display);font-size:21px;color:var(--ink);margin-bottom:6px;font-weight:600}
+.dtbl{overflow-x:auto;margin-top:18px;border:1px solid var(--line);background:var(--surface)}
+.dtbl table{min-width:560px;font-size:13px}
+.dtbl th,.dtbl td{padding:8px 10px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
+.dtbl th:first-child{min-width:240px}
+.dtbl td.r,.dtbl th.r{text-align:right;font-family:var(--f-mono);white-space:nowrap}
+.tip{position:fixed;z-index:1000;pointer-events:none;background:var(--ink);color:var(--bg);font:500 12px var(--f-body);padding:6px 9px;border-radius:6px;box-shadow:0 4px 14px rgba(0,0,0,.25);opacity:0;transition:opacity .1s;max-width:260px}
+.tip b{font-family:var(--f-mono)}
+@media (max-width:600px){
+  .drw-h h2{font-size:20px}
+  .drw-tools,.drw-b{padding-left:16px;padding-right:16px}
+  .drw-h{padding-left:16px}
+  .drw-tools .src{margin-left:0;width:100%}
+  .pano{grid-template-columns:1fr}
+  .ci{grid-template-columns:minmax(0,1fr) auto;grid-template-areas:"l n" "b b"}
+}
 </style>
 </head>
 <body>
@@ -232,7 +308,7 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
   <nav class="tabs" role="tablist" aria-label="Vistas">
     <button role="tab" id="tab-avance" aria-controls="avance" aria-selected="true">Avance de recolección</button>
     <button role="tab" id="tab-coherencia" aria-controls="coherencia" aria-selected="false">Mapa de coherencia</button>
-    <span class="date" id="corte">Datos al 22-10-2026 15:46</span>
+    <span class="date" id="corte">Datos al 22-10-2026 19:26</span>
   </nav>
 </div></div></div>
 
@@ -283,10 +359,22 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
   <span>Datos agregados, sin información personal ni clínica.</span>
 </div></footer>
 
+<dialog class="drw" id="drw" aria-labelledby="drw-t">
+  <div class="drw-h"><div class="k" id="drw-k"></div><h2 id="drw-t"></h2><div class="meta" id="drw-m"></div>
+    <button class="drw-x" id="drw-x" aria-label="Cerrar"><svg viewBox="0 0 24 24" fill="none"><path d="M6 6l12 12M18 6L6 18"/></svg></button></div>
+  <div class="drw-tools">
+    <div class="seg" role="group" aria-label="Orden"><button data-ord="form" aria-pressed="true">Orden del formulario</button><button data-ord="bajo" aria-pressed="false">Menor resultado primero</button></div>
+    <div class="seg" role="group" aria-label="Vista"><button data-vis="graf" aria-pressed="true">Gráficos</button><button data-vis="tabla" aria-pressed="false">Tabla</button></div>
+    <span class="src" id="drw-src"></span>
+  </div>
+  <div class="drw-b" id="drw-b"></div>
+</dialog>
+<div class="tip" id="tip" role="tooltip"></div>
+
 <script>
 const INST=[
  {id:"A1",anexo:1,nombre:"Lista de evaluación documental",tecnica:"Revisión documental",unidad:"expedientes",meta:381,logrado:223,registros:223,estado:"recoleccion",pop:"P1",aplica:"Investigadores, revisando cada expediente",muestreo:"Probabilístico aleatorio simple",validacion:"No requiere (instrumento temático)",nota:"El conteo puede incluir una respuesta de prueba registrada antes de iniciar la recolección."},
- {id:"A4",anexo:4,nombre:"Lista de evaluación tecnológica",tecnica:"Evaluación tecnológica",unidad:"componentes",meta:8,logrado:1,estado:"recoleccion",pop:"P3",aplica:"Investigadores, con evidencia de Informática",muestreo:"Censal",validacion:"No requiere (instrumento temático)"},
+ {id:"A4",anexo:4,nombre:"Lista de evaluación tecnológica",tecnica:"Evaluación tecnológica",unidad:"componentes",meta:8,logrado:1,registros:2,estado:"recoleccion",pop:"P3",aplica:"Investigadores, con evidencia de Informática",muestreo:"Censal",validacion:"No requiere (instrumento temático)"},
  {id:"A6",anexo:6,nombre:"Lista de evaluación de controles de seguridad",tecnica:"Evaluación de controles",unidad:"componentes",meta:8,logrado:0,estado:"listo",pop:"P3",aplica:"Investigadores, con evidencia de Informática",muestreo:"Censal",validacion:"No requiere (instrumento temático)"},
  {id:"A5",anexo:5,nombre:"Matriz de riesgos",tecnica:"Evaluación de riesgos · NIST SP 800-30",unidad:"componentes",meta:8,logrado:0,estado:"espera",pop:"P3",aplica:"Investigadores, a partir de los Anexos 3, 4 y 6",muestreo:"Censal",validacion:"No requiere (instrumento temático)",nota:"Se completa en el documento, no en Google Forms."},
  {id:"A3",anexo:3,nombre:"Guía de entrevista semiestructurada",tecnica:"Entrevista semiestructurada",unidad:"informantes",meta:9,logrado:0,estado:"listo",pop:"P2",aplica:"Investigadores, entrevistando a cada informante",muestreo:"No probabilístico intencional",validacion:"Docente y juicio de expertos o prueba piloto"},
@@ -324,6 +412,103 @@ const esc=s=>String(s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",
 const byAnexo=[...INST].sort((a,b)=>a.anexo-b.anexo);
 const nm=i=>i.corto||i.nombre;
 
+// Gráficos por formulario: conteos agregados por pregunta y opción (sin respuestas abiertas)
+let PREG=[["A1", 4, "1. ¿El expediente presenta una identificación que permite distinguirlo de otros expedientes?", "Cumple", 210], ["A1", 4, "1. ¿El expediente presenta una identificación que permite distinguirlo de otros expedientes?", "Cumple parcialmente", 13], ["A1", 5, "2. ¿Los documentos que integran el expediente se encuentran clasificados de acuerdo con criterios establecidos?", "Cumple", 169], ["A1", 5, "2. ¿Los documentos que integran el expediente se encuentran clasificados de acuerdo con criterios establecidos?", "Cumple parcialmente", 54], ["A1", 6, "3. ¿Los documentos que integran el expediente se encuentran organizados siguiendo un orden documental identificable?", "Cumple", 183], ["A1", 6, "3. ¿Los documentos que integran el expediente se encuentran organizados siguiendo un orden documental identificable?", "Cumple parcialmente", 39], ["A1", 6, "3. ¿Los documentos que integran el expediente se encuentran organizados siguiendo un orden documental identificable?", "No cumple", 1], ["A1", 7, "4. ¿Los documentos se encuentran clasificados de acuerdo con criterios establecidos por el área correspondiente?", "Cumple", 179], ["A1", 7, "4. ¿Los documentos se encuentran clasificados de acuerdo con criterios establecidos por el área correspondiente?", "Cumple parcialmente", 44], ["A1", 8, "5. ¿Se evidencia consistencia en los criterios utilizados para organizar y clasificar la documentación?", "Cumple", 185], ["A1", 8, "5. ¿Se evidencia consistencia en los criterios utilizados para organizar y clasificar la documentación?", "Cumple parcialmente", 36], ["A1", 8, "5. ¿Se evidencia consistencia en los criterios utilizados para organizar y clasificar la documentación?", "No cumple", 2], ["A1", 9, "6. ¿El expediente se encuentra libre de documentos duplicados?", "Cumple", 124], ["A1", 9, "6. ¿El expediente se encuentra libre de documentos duplicados?", "Cumple parcialmente", 96], ["A1", 9, "6. ¿El expediente se encuentra libre de documentos duplicados?", "No aplica", 1], ["A1", 9, "6. ¿El expediente se encuentra libre de documentos duplicados?", "No cumple", 2], ["A1", 10, "Observaciones:", "No", 3], ["A1", 11, "7. ¿El expediente se encuentra almacenado en el espacio destinado para su conservación?", "Cumple", 154], ["A1", 11, "7. ¿El expediente se encuentra almacenado en el espacio destinado para su conservación?", "Cumple parcialmente", 68], ["A1", 11, "7. ¿El expediente se encuentra almacenado en el espacio destinado para su conservación?", "No cumple", 1], ["A1", 12, "8. ¿Las condiciones físicas del lugar de almacenamiento permiten conservar adecuadamente los expedientes?", "Cumple", 63], ["A1", 12, "8. ¿Las condiciones físicas del lugar de almacenamiento permiten conservar adecuadamente los expedientes?", "Cumple parcialmente", 157], ["A1", 12, "8. ¿Las condiciones físicas del lugar de almacenamiento permiten conservar adecuadamente los expedientes?", "No cumple", 3], ["A1", 13, "9. ¿Los documentos del expediente se encuentran libres de deterioro que dificulte su consulta?", "Cumple", 69], ["A1", 13, "9. ¿Los documentos del expediente se encuentran libres de deterioro que dificulte su consulta?", "Cumple parcialmente", 152], ["A1", 13, "9. ¿Los documentos del expediente se encuentran libres de deterioro que dificulte su consulta?", "No cumple", 2], ["A1", 14, "10. ¿Los expedientes se encuentran protegidos frente a condiciones que puedan provocar su deterioro?", "Cumple", 65], ["A1", 14, "10. ¿Los expedientes se encuentran protegidos frente a condiciones que puedan provocar su deterioro?", "Cumple parcialmente", 150], ["A1", 14, "10. ¿Los expedientes se encuentran protegidos frente a condiciones que puedan provocar su deterioro?", "No cumple", 8], ["A1", 15, "11. ¿El espacio destinado al almacenamiento permite mantener los expedientes organizados y accesibles?", "Cumple", 99], ["A1", 15, "11. ¿El espacio destinado al almacenamiento permite mantener los expedientes organizados y accesibles?", "Cumple parcialmente", 117], ["A1", 15, "11. ¿El espacio destinado al almacenamiento permite mantener los expedientes organizados y accesibles?", "No cumple", 7], ["A1", 16, "12. ¿El expediente se encuentra completo, sin documentos faltantes ni secciones incompletas, de acuerdo con los criterios documentales establecidos?", "Cumple", 113], ["A1", 16, "12. ¿El expediente se encuentra completo, sin documentos faltantes ni secciones incompletas, de acuerdo con los criterios documentales establecidos?", "Cumple parcialmente", 106], ["A1", 16, "12. ¿El expediente se encuentra completo, sin documentos faltantes ni secciones incompletas, de acuerdo con los criterios documentales establecidos?", "No cumple", 4], ["A1", 17, "Observaciones:", "No", 3], ["A1", 18, "13. ¿Existe un procedimiento definido para localizar un expediente físico?", "Cumple", 193], ["A1", 18, "13. ¿Existe un procedimiento definido para localizar un expediente físico?", "Cumple parcialmente", 30], ["A1", 19, "14. ¿La ubicación del expediente puede determinarse mediante los mecanismos actuales de organización?", "Cumple", 115], ["A1", 19, "14. ¿La ubicación del expediente puede determinarse mediante los mecanismos actuales de organización?", "Cumple parcialmente", 108], ["A1", 20, "15. ¿El expediente se encuentra disponible cuando es requerido para consulta?", "Cumple", 109], ["A1", 20, "15. ¿El expediente se encuentra disponible cuando es requerido para consulta?", "Cumple parcialmente", 113], ["A1", 20, "15. ¿El expediente se encuentra disponible cuando es requerido para consulta?", "No cumple", 1], ["A1", 21, "16. ¿El expediente puede ser recuperado sin dificultades relacionadas con su ubicación o almacenamiento?", "Cumple", 109], ["A1", 21, "16. ¿El expediente puede ser recuperado sin dificultades relacionadas con su ubicación o almacenamiento?", "Cumple parcialmente", 113], ["A1", 21, "16. ¿El expediente puede ser recuperado sin dificultades relacionadas con su ubicación o almacenamiento?", "No cumple", 1], ["A1", 22, "17. ¿El expediente puede ser consultado sin dificultades relacionadas con el estado físico de la documentación?", "Cumple", 121], ["A1", 22, "17. ¿El expediente puede ser consultado sin dificultades relacionadas con el estado físico de la documentación?", "Cumple parcialmente", 100], ["A1", 22, "17. ¿El expediente puede ser consultado sin dificultades relacionadas con el estado físico de la documentación?", "No cumple", 2], ["A1", 23, "Observaciones:", "No", 3], ["A1", 24, "18. ¿Se dispone de un mecanismo para registrar el préstamo de expedientes?", "Cumple", 192], ["A1", 24, "18. ¿Se dispone de un mecanismo para registrar el préstamo de expedientes?", "Cumple parcialmente", 31], ["A1", 25, "19. ¿El registro de préstamo permite identificar el expediente entregado?", "Cumple", 168], ["A1", 25, "19. ¿El registro de préstamo permite identificar el expediente entregado?", "Cumple parcialmente", 54], ["A1", 25, "19. ¿El registro de préstamo permite identificar el expediente entregado?", "No aplica", 1], ["A1", 26, "20. ¿Se dispone de un mecanismo para registrar la devolución de los expedientes prestados?", "Cumple", 171], ["A1", 26, "20. ¿Se dispone de un mecanismo para registrar la devolución de los expedientes prestados?", "Cumple parcialmente", 52], ["A1", 27, "21. ¿Se registran incidencias relacionadas con expedientes no localizados, documentación faltante u otras situaciones que afecten su disponibilidad?", "Cumple", 93], ["A1", 27, "21. ¿Se registran incidencias relacionadas con expedientes no localizados, documentación faltante u otras situaciones que afecten su disponibilidad?", "Cumple parcialmente", 90], ["A1", 27, "21. ¿Se registran incidencias relacionadas con expedientes no localizados, documentación faltante u otras situaciones que afecten su disponibilidad?", "No aplica", 35], ["A1", 27, "21. ¿Se registran incidencias relacionadas con expedientes no localizados, documentación faltante u otras situaciones que afecten su disponibilidad?", "No cumple", 5], ["A1", 28, "Observaciones:", "No", 3], ["A1", 29, "22. ¿Se identificó alguna incidencia durante la revisión del expediente?", "No", 223], ["A4", 3, "Componente o sistema evaluado", "ELOGIC", 2], ["A4", 5, "¿El componente evaluado se encuentra operativo y en uso para la gestión de la información clínica?", "Disponible", 2], ["A4", 6, "¿El componente cuenta con documentación técnica disponible, como inventarios, manuales o fichas técnicas?", "Disponible", 1], ["A4", 6, "¿El componente cuenta con documentación técnica disponible, como inventarios, manuales o fichas técnicas?", "Disponible parcialmente", 1], ["A4", 7, "¿Las bases de datos asociadas al componente se encuentran identificadas y documentadas?", "Disponible", 1], ["A4", 7, "¿Las bases de datos asociadas al componente se encuentran identificadas y documentadas?", "No disponible", 1], ["A4", 8, "¿El componente dispone de soporte técnico y mantenimiento?", "Disponible", 2], ["A4", 9, "¿Los servidores asociados al componente disponen de capacidad suficiente para su operación actual?", "Disponible", 1], ["A4", 9, "¿Los servidores asociados al componente disponen de capacidad suficiente para su operación actual?", "Disponible parcialmente", 1], ["A4", 10, "¿La infraestructura tecnológica disponible permitiría incorporar un Sistema de Gestión de Expedientes Electrónicos?", "Disponible", 1], ["A4", 10, "¿La infraestructura tecnológica disponible permitiría incorporar un Sistema de Gestión de Expedientes Electrónicos?", "Disponible parcialmente", 1], ["A4", 11, "¿Las estaciones de trabajo de las áreas usuarias cuentan con condiciones adecuadas para utilizar un sistema electrónico?", "Disponible", 1], ["A4", 11, "¿Las estaciones de trabajo de las áreas usuarias cuentan con condiciones adecuadas para utilizar un sistema electrónico?", "Disponible parcialmente", 1], ["A4", 12, "¿La capacidad de almacenamiento disponible permite resguardar la información clínica actual?", "Disponible", 1], ["A4", 12, "¿La capacidad de almacenamiento disponible permite resguardar la información clínica actual?", "Disponible parcialmente", 1], ["A4", 13, "¿La capacidad de almacenamiento permitiría incorporar los expedientes clínicos digitalizados?", "Disponible", 1], ["A4", 13, "¿La capacidad de almacenamiento permitiría incorporar los expedientes clínicos digitalizados?", "Disponible parcialmente", 1], ["A4", 14, "¿Se dispone de recursos de almacenamiento local y en la nube para la información clínica?", "Disponible", 2], ["A4", 15, "¿La red institucional permite una conectividad estable entre las áreas usuarias y los servidores?", "Disponible", 1], ["A4", 15, "¿La red institucional permite una conectividad estable entre las áreas usuarias y los servidores?", "Disponible parcialmente", 1], ["A4", 16, "¿El componente permite la integración e intercambio de información con ELOGIC, PACS y LIS?", "Disponible", 2], ["A4", 17, "¿El componente utiliza estándares de interoperabilidad, como HL7 FHIR o DICOM?", "Disponible", 1], ["A4", 17, "¿El componente utiliza estándares de interoperabilidad, como HL7 FHIR o DICOM?", "No disponible", 1], ["A4", 18, "¿Se dispone de mecanismos de respaldo para la información almacenada en el componente?", "Disponible", 2], ["A4", 19, "¿Se dispone de mecanismos de redundancia que mantengan la disponibilidad del componente ante fallas?", "Disponible", 1], ["A4", 19, "¿Se dispone de mecanismos de redundancia que mantengan la disponibilidad del componente ante fallas?", "Disponible parcialmente", 1]];
+const GRAF=["A1","A2","A4","A6"];
+const ESCALAS=[
+ {o:["Cumple","Cumple parcialmente","No cumple","No aplica"],c:["--c-pos","--c-mid","--c-neg","--c-na"],pos:["Cumple"],lbl:"cumple"},
+ {o:["Disponible","Disponible parcialmente","No disponible","No evaluable"],c:["--c-pos","--c-mid","--c-neg","--c-na"],pos:["Disponible"],lbl:"disponible"},
+ {o:["Totalmente en desacuerdo","En desacuerdo","Ni de acuerdo ni en desacuerdo","De acuerdo","Totalmente de acuerdo"],c:["--l-1","--l-2","--l-3","--l-4","--l-5"],pos:["De acuerdo","Totalmente de acuerdo"],lbl:"de acuerdo"},
+ {o:["Alta","Media","Baja","No evaluable"],c:["--l-5","--l-4","--l-2","--c-na"],pos:["Alta"],lbl:"alta"},
+ {o:["Sí","No"],c:["--l-5","--c-na"],pos:["Sí"],lbl:"sí"}
+];
+const GRUPO={A1:null,A2:"Adopción tecnológica y capacitación",A4:"Condiciones tecnológicas del componente",A6:"Controles de seguridad"};
+const pct1=(a,b)=>b?Math.round(a/b*1000)/10:0;
+function preguntas(id){
+  const m=new Map();
+  PREG.filter(r=>r[0]===id).forEach(([a,c,p,o,n])=>{if(!m.has(c))m.set(c,{col:c,t:String(p).trim(),ops:{}});const q=m.get(c);q.ops[o]=(q.ops[o]||0)+n;});
+  return [...m.values()].sort((a,b)=>a.col-b.col).map(q=>{
+    const ks=Object.keys(q.ops); q.total=ks.reduce((s,k)=>s+q.ops[k],0);
+    q.obs=/^observaci/i.test(q.t);
+    let best=null,ov=0; ESCALAS.forEach(e=>{const h=ks.filter(k=>e.o.includes(k)).length; if(h===ks.length&&h>ov){best=e;ov=h}});
+    q.esc=best; if(best){q.posN=best.pos.reduce((s,k)=>s+(q.ops[k]||0),0); q.posP=pct1(q.posN,q.total);}
+    const c=q.t.match(/^(C-\d+)\.\s*Estado de cumplimiento\s*[—-]\s*(.+)$/); if(c) q.t=c[1]+" · "+c[2];
+    q.t=q.t.replace(/^\d+\.\s+(?=Componente)/,"");
+    return q;});
+}
+function grupos(id){
+  const qs=preguntas(id), out=[];
+  if(id==="A1"){ const dims=OBJ[0].dims; let g={t:dims[0],qs:[]};
+    qs.forEach(q=>{ if(q.obs){ if(g.qs.length){out.push(g); g={t:dims[out.length]||("Sección "+(out.length+1)),qs:[]};} return;} g.qs.push(q); });
+    if(g.qs.length) out.push(g); return out; }
+  const cat=qs.filter(q=>!q.obs&&!q.esc), ev=qs.filter(q=>!q.obs&&q.esc);
+  if(cat.length) out.push({t:"Caracterización",qs:cat});
+  if(ev.length) out.push({t:GRUPO[id]||"Evaluación",qs:ev});
+  return out;
+}
+function nPreg(id){return grupos(id).reduce((s,g)=>s+g.qs.length,0)}
+function gBoton(i){
+  if(GRAF.includes(i.id)){const n=nPreg(i.id);
+    return `<button class="gbtn" data-g="${i.id}" aria-haspopup="dialog"><svg viewBox="0 0 24 24"><path d="M4 20V10M10 20V4M16 20v-7M22 20H2"/></svg>Ver gráficos <span>${n?n+" preguntas":"sin respuestas aún"}</span></button>`;}
+  if(i.id==="A3") return `<div class="gnote">Respuestas abiertas: se analizan en el documento y no se publican.</div>`;
+  if(i.id==="A5") return `<div class="gnote">Sin formulario: se construye en el documento.</div>`;
+  return "";
+}
+const cv=v=>`var(${v})`;
+function barra(ops,E,total){
+  const orden=[...E.o.filter(k=>ops[k]),...Object.keys(ops).filter(k=>!E.o.includes(k))];
+  if(!total) return `<div class="sbar empty"></div>`;
+  return `<div class="sbar" role="img" aria-label="${esc(orden.map(k=>`${k}: ${ops[k]}`).join(", "))}">${orden.map(k=>{const j=E.o.indexOf(k),p=pct1(ops[k],total);
+    return `<div class="sg" style="flex:${ops[k]} 1 0;--c:${cv(j>=0?E.c[j]:"--c-na")}" data-tip="${esc(k)}|${ops[k]}|${p}">${p>=9?Math.round(p)+"%":""}</div>`}).join("")}</div>`;
+}
+function leyenda(ops,E,total,todas){
+  const ks=todas?E.o:E.o.filter(k=>ops[k]);
+  return `<div class="lg">${ks.map(k=>{const j=E.o.indexOf(k);return `<span><i style="--c:${cv(E.c[j])}"></i>${esc(k)} <b>${fmt(ops[k]||0)}</b>${total?` · ${pct1(ops[k]||0,total)}%`:""}</span>`}).join("")}</div>`;
+}
+let gAct=null, gOrd="form", gVis="graf";
+function renderG(){
+  const id=gAct; if(!id) return; const i=by[id], gs=grupos(id);
+  document.getElementById("drw-k").textContent=`Anexo ${i.anexo} · ${i.tecnica}`;
+  document.getElementById("drw-t").textContent=i.nombre;
+  const nq=gs.reduce((s,g)=>s+g.qs.length,0);
+  document.getElementById("drw-m").innerHTML=`<span><b>${fmt(i.registros??i.logrado)}</b> registros</span><span><b>${fmt(i.logrado)}</b> de ${fmt(i.meta)} ${i.unidad}</span><span><b>${nq}</b> preguntas cerradas</span>`;
+  document.getElementById("drw-src").textContent="Solo opciones cerradas; las observaciones abiertas no se publican.";
+  document.querySelectorAll("#drw [data-ord]").forEach(b=>b.setAttribute("aria-pressed",b.dataset.ord===gOrd));
+  document.querySelectorAll("#drw [data-vis]").forEach(b=>b.setAttribute("aria-pressed",b.dataset.vis===gVis));
+  const body=document.getElementById("drw-b");
+  if(!nq){ body.innerHTML=`<div class="empty-st"><b>Aún no hay respuestas</b>Los gráficos aparecerán automáticamente cuando se registren respuestas en el formulario.</div>`; return; }
+  // Panorama: todas las respuestas de la escala principal
+  const escQ=gs.flatMap(g=>g.qs).filter(q=>q.esc); let h="";
+  if(escQ.length){
+    const cnt=new Map(); escQ.forEach(q=>cnt.set(q.esc,(cnt.get(q.esc)||0)+1)); const E=[...cnt].sort((a,b)=>b[1]-a[1])[0][0];
+    const ops={}; let tot=0; escQ.filter(q=>q.esc===E).forEach(q=>Object.entries(q.ops).forEach(([k,n])=>{ops[k]=(ops[k]||0)+n;tot+=n}));
+    const pos=E.pos.reduce((s,k)=>s+(ops[k]||0),0);
+    h+=`<div class="pano"><div class="hn mono">${pct1(pos,tot)}<small>%</small></div><div class="hl">de las ${fmt(tot)} respuestas evaluadas indican <b>${esc(E.pos.join(" o ").toLowerCase())}</b>, considerando las ${cnt.get(E)} preguntas de esta escala.</div>
+      <div class="wide">${barra(ops,E,tot)}${leyenda(ops,E,tot,true)}</div></div>`;
+  }
+  gs.forEach(g=>{
+    let qs=[...g.qs]; if(gOrd==="bajo") qs.sort((a,b)=>(a.esc?a.posP:999)-(b.esc?b.posP:999));
+    const sq=qs.filter(q=>q.esc), gp=sq.length?pct1(sq.reduce((s,q)=>s+q.posN,0),sq.reduce((s,q)=>s+q.total,0)):null;
+    h+=`<div class="grp-h"><h3>${esc(g.t)}</h3><span>${qs.length} ${qs.length===1?"pregunta":"preguntas"}${gp!=null?` · ${gp}% ${sq[0].esc.lbl}`:""}</span></div>`;
+    if(gVis==="tabla"){
+      const E=sq[0]&&sq[0].esc, cols=E?E.o.filter(k=>sq.some(q=>q.ops[k])):[];
+      if(sq.length) h+=`<div class="dtbl"><table><thead><tr><th>Pregunta</th>${cols.map(k=>`<th class="r">${esc(k)}</th>`).join("")}<th class="r">Total</th><th class="r">% ${esc(E.lbl)}</th></tr></thead><tbody>${sq.map(q=>`<tr><td>${esc(q.t)}</td>${cols.map(k=>`<td class="r">${fmt(q.ops[k]||0)}</td>`).join("")}<td class="r">${fmt(q.total)}</td><td class="r">${q.posP}%</td></tr>`).join("")}</tbody></table></div>`;
+      qs.filter(q=>!q.esc).forEach(q=>{h+=`<div class="dtbl"><table><thead><tr><th>${esc(q.t)}</th><th class="r">Registros</th><th class="r">%</th></tr></thead><tbody>${Object.entries(q.ops).sort((a,b)=>b[1]-a[1]).map(([k,n])=>`<tr><td>${esc(k)}</td><td class="r">${fmt(n)}</td><td class="r">${pct1(n,q.total)}%</td></tr>`).join("")}</tbody></table></div>`});
+      return;
+    }
+    qs.forEach(q=>{
+      if(q.esc){
+        h+=`<div class="qc"><div class="qt"><span>${esc(q.t)}</span><span class="kp">${q.posP}%<small>${esc(q.esc.lbl)}</small></span></div>${barra(q.ops,q.esc,q.total)}${leyenda(q.ops,q.esc,q.total)}</div>`;
+      } else {
+        const ent=Object.entries(q.ops).sort((a,b)=>b[1]-a[1]), mx=ent[0]?ent[0][1]:1;
+        h+=`<div class="qc"><div class="qt"><span>${esc(q.t)}</span><span class="kp">${fmt(q.total)}<small>registros</small></span></div><div class="cb">${ent.map(([k,n])=>`<div class="ci"><span>${esc(k)}</span><div class="bt"><i style="width:${n/mx*100}%" data-tip="${esc(k)}|${n}|${pct1(n,q.total)}"></i></div><em>${fmt(n)} <small>· ${pct1(n,q.total)}%</small></em></div>`).join("")}</div></div>`;
+      }
+    });
+  });
+  body.innerHTML=h;
+}
+function abrirG(id){gAct=id; gOrd="form"; renderG(); const d=document.getElementById("drw"); if(!d.open){ d.showModal(); } document.getElementById("drw-b").scrollTop=0;}
+
 // Avance
 function renderAvance(){
 const general=Math.round(INST.reduce((s,i)=>s+pct(i),0)/INST.length*10)/10;
@@ -338,7 +523,7 @@ document.getElementById("states").innerHTML=[["recoleccion","var(--ok)"],["valid
  .map(([s,c])=>`<div><b>${cnt(s)}</b><span><i style="background:${c}"></i>${ESTADO[s]}</span></div>`).join("");
 document.getElementById("ledger").innerHTML=INST.map(i=>`<div class="row">
   <div class="num">${i.anexo}<small>Anexo</small></div>
-  <div><h3>${esc(i.nombre)}</h3><div class="tec">${esc(i.tecnica)} · ${esc(POP[i.pop].t)}</div></div>
+  <div><h3>${esc(i.nombre)}</h3><div class="tec">${esc(i.tecnica)} · ${esc(POP[i.pop].t)}</div>${gBoton(i)}</div>
   <div class="m s-${i.estado}" style="background:none"><div class="meter"><i style="width:${pct(i)}%"></i></div>
     <div class="meter-lbl"><span><b>${fmt(i.logrado)}</b> de ${fmt(i.meta)} ${i.unidad}</span><span class="mono">${pct(i)}%</span></div></div>
   <span class="pill s-${i.estado}">${ESTADO[i.estado]}</span>
@@ -417,6 +602,23 @@ let start=location.hash.replace("#","");
 if(start!=="avance"&&start!=="coherencia"){try{start=localStorage.getItem("sgee2-view")}catch(e){start=null}}
 show(start==="coherencia"?"coherencia":"avance"); paint();
 
+// Panel de gráficos: apertura, controles y tooltip
+document.getElementById("ledger").addEventListener("click",e=>{const b=e.target.closest(".gbtn");if(b) abrirG(b.dataset.g)});
+const drw=document.getElementById("drw");
+document.getElementById("drw-x").addEventListener("click",()=>drw.close());
+drw.addEventListener("click",e=>{if(e.target===drw) drw.close()});
+drw.addEventListener("close",()=>{gAct=null;tip.style.opacity=0;});
+drw.querySelectorAll("[data-ord]").forEach(b=>b.addEventListener("click",()=>{gOrd=b.dataset.ord;renderG()}));
+drw.querySelectorAll("[data-vis]").forEach(b=>b.addEventListener("click",()=>{gVis=b.dataset.vis;renderG()}));
+const tip=document.getElementById("tip");
+drw.addEventListener("mousemove",e=>{const t=e.target.closest("[data-tip]");
+  if(!t){tip.style.opacity=0;return;}
+  const [k,n,p]=t.dataset.tip.split("|"); tip.innerHTML=`${esc(k)}<br><b>${fmt(+n)}</b> · ${p}%`;
+  const w=tip.offsetWidth,hh=tip.offsetHeight; let x=e.clientX+14,y=e.clientY-hh-12;
+  if(x+w>innerWidth-8) x=e.clientX-w-14; if(y<8) y=e.clientY+18;
+  tip.style.left=x+"px"; tip.style.top=y+"px"; tip.style.opacity=1;});
+drw.addEventListener("mouseleave",()=>tip.style.opacity=0);
+
 // Datos en vivo desde la pestaña "Resumen" publicada en Google Sheets
 const CSV_URL="https://docs.google.com/spreadsheets/d/e/2PACX-1vSUA20nI9t9fB0MTOK1n--o1XTpvayYZb6Ddr0lNvwFFedPpBj2MsXVmii9Vof0qWxznnwhtTiWtMdP/pub?gid=1420756577&single=true&output=csv";
 function parseCSV(text){
@@ -431,8 +633,9 @@ async function cargarDatos(){
   const el=document.getElementById("corte");
   try{
     const r=await fetch(CSV_URL,{cache:"no-store"}); if(!r.ok) throw new Error(r.status);
-    let corte="";
+    let corte=""; const pr=[];
     parseCSV(await r.text()).forEach(row=>{
+      if(row.p_anexo&&row.p_opcion&&row.p_n){const n=parseInt(row.p_n,10),c=parseInt(row.p_col,10); if(!isNaN(n)&&!isNaN(c)) pr.push([row.p_anexo,c,row.p_pregunta,row.p_opcion,n]);}
       if(row.clave==="corte"){corte=row.registrado;return;}
       const i=by[row.clave]; if(!i) return;
       const n=v=>{const x=parseFloat(String(v).replace(/,/g,""));return isNaN(x)?null:x;};
@@ -441,9 +644,10 @@ async function cargarDatos(){
       if(n(row.registros)!==null) i.registros=n(row.registros);
       if(ESTADO[row.estado]) i.estado=row.estado;
     });
-    renderAvance(); paint();
+    if(pr.length) PREG=pr;
+    renderAvance(); paint(); renderG();
     el.textContent="En vivo · última respuesta: "+(corte||"sin fecha");
-  }catch(e){ el.textContent="Datos al 22-10-2026 15:46"; }
+  }catch(e){ el.textContent="Datos al 22-10-2026 19:26"; }
 }
 cargarDatos();
 </script>
