@@ -53,6 +53,9 @@ h1,h2,h3{font-family:var(--f-display);font-weight:600;line-height:1.1;margin:0;t
 .hero h1{font-size:clamp(26px,3.4vw,40px);line-height:1.18;margin-top:10px;color:var(--band-ink)}
 .hero h1 em{font-style:italic;color:var(--gold)}
 .hero p{color:var(--band-muted);max-width:56ch;margin:14px 0 0}
+.byline{display:flex;flex-wrap:wrap;gap:14px 40px;margin:22px 0 0;padding-top:16px;border-top:1px solid rgba(242,237,227,.14)}
+.byline dt{font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);font-weight:600}
+.byline dd{margin:4px 0 0;color:var(--band-ink);font-size:14.5px;line-height:1.5}
 .headline{border:1px solid rgba(242,237,227,.16);padding:18px 20px;background:rgba(255,255,255,.03)}
 .headline .lbl{font-size:11.5px;letter-spacing:.16em;text-transform:uppercase;color:var(--band-muted)}
 .headline .big{font-family:var(--f-display);font-size:46px;line-height:1;margin-top:6px;color:var(--band-ink)}
@@ -349,6 +352,10 @@ dialog.drw::backdrop{background:rgba(8,14,24,.55)}
         <div class="kicker">Trabajo Final de Graduación · Tegucigalpa, 2026</div>
         <h1>Propuesta de implementación de un Sistema de Gestión de Expedientes Electrónicos para la <em>digitalización de la información clínica</em> del Hospital Militar de Honduras</h1>
         <p>Tablero de seguimiento de la aplicación de los instrumentos y de la coherencia metodológica de la investigación, con enfoque en ciberseguridad.</p>
+        <dl class="byline">
+          <div><dt>Sustentantes</dt><dd>Laura Karina Chinchilla Chinchilla<br>Osman René Núñez Núñez</dd></div>
+          <div><dt>Catedrático</dt><dd>Dr. Jorge Maradiaga</dd></div>
+        </dl>
       </div>
       <div class="headline" id="headline"></div>
     </div>
@@ -406,7 +413,7 @@ dialog.drw::backdrop{background:rgba(8,14,24,.55)}
 </div></main>
 
 <footer class="gut"><div class="wrap">
-  <span>Laura Karina Chinchilla Chinchilla · Osman René Núñez Núñez</span>
+  <span>Laura Karina Chinchilla Chinchilla · Osman René Núñez Núñez · Catedrático: Dr. Jorge Maradiaga</span>
   <span>Datos agregados, sin información personal ni clínica.</span>
 </div></footer>
 
