@@ -86,7 +86,7 @@ main{padding-block:34px 60px}
 p.note{color:var(--muted);max-width:72ch;margin:0 0 18px}
 
 /* Estado general */
-.states{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border:1px solid var(--line);background:var(--surface)}
+.states{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));border:1px solid var(--line);background:var(--surface)}
 .states div{padding:18px 20px;border-right:1px solid var(--line)}
 .states div:last-child{border-right:0}
 .states b{display:block;font-family:var(--f-display);font-size:34px;line-height:1}
@@ -110,6 +110,7 @@ p.note{color:var(--muted);max-width:72ch;margin:0 0 18px}
 .s-validacion{--c:var(--warn);background:var(--warn-soft);color:var(--warn)}
 .s-listo{--c:var(--info);background:var(--info-soft);color:var(--info)}
 .s-espera{--c:var(--idle);background:var(--idle-soft);color:var(--idle)}
+.s-finalizado{--c:var(--gold);background:var(--gold-soft);color:var(--ink)}
 .row details{grid-column:2 / -1}
 .row summary{cursor:pointer;font-size:13px;color:var(--muted);list-style:none}
 .row summary::-webkit-details-marker{display:none}
@@ -199,8 +200,9 @@ footer .wrap{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap}
 @media (max-width:860px){
   .hero,.deliveries,.detail{grid-template-columns:1fr}
   .states{grid-template-columns:repeat(2,minmax(0,1fr))}
-  .states div:nth-child(2){border-right:0}
-  .states div:nth-child(-n+2){border-bottom:1px solid var(--line)}
+  .states div{border-bottom:1px solid var(--line)}
+  .states div:nth-child(2n){border-right:0}
+  .states div:last-child{grid-column:1 / -1;border-bottom:0;border-right:0}
   .row{grid-template-columns:52px minmax(0,1fr) auto;gap:12px 14px}
   .row .num{font-size:36px}
   .row .m{grid-column:2 / -1;grid-row:2}
@@ -368,7 +370,7 @@ dialog.drw::backdrop{background:rgba(8,14,24,.55)}
   <nav class="tabs" role="tablist" aria-label="Vistas">
     <button role="tab" id="tab-avance" aria-controls="avance" aria-selected="true">Avance de recolección</button>
     <button role="tab" id="tab-coherencia" aria-controls="coherencia" aria-selected="false">Mapa de coherencia</button>
-    <span class="date" id="corte">Datos al 22-10-2026 19:26</span>
+    <span class="date" id="corte">Datos al 25-10-2026 11:30</span>
   </nav>
 </div></div></div>
 
@@ -434,7 +436,7 @@ dialog.drw::backdrop{background:rgba(8,14,24,.55)}
 
 <script>
 const INST=[
- {id:"A1",anexo:1,nombre:"Lista de evaluación documental",tecnica:"Revisión documental",unidad:"expedientes",meta:381,logrado:223,registros:223,estado:"recoleccion",pop:"P1",aplica:"Investigadores, revisando cada expediente",muestreo:"Probabilístico aleatorio simple",validacion:"No requiere (instrumento temático)",nota:"El conteo puede incluir una respuesta de prueba registrada antes de iniciar la recolección."},
+ {id:"A1",anexo:1,nombre:"Lista de evaluación documental",tecnica:"Revisión documental",unidad:"expedientes",meta:381,logrado:381,registros:381,estado:"finalizado",pop:"P1",aplica:"Investigadores, revisando cada expediente",muestreo:"Probabilístico aleatorio simple",validacion:"No requiere (instrumento temático)",nota:"Recolección finalizada: se analizan los 381 expedientes de la muestra; un registro duplicado se excluyó del análisis."},
  {id:"A4",anexo:4,nombre:"Lista de evaluación tecnológica",tecnica:"Evaluación tecnológica",unidad:"componentes",meta:8,logrado:1,registros:2,estado:"recoleccion",pop:"P3",aplica:"Investigadores, con evidencia de Informática",muestreo:"Censal",validacion:"No requiere (instrumento temático)"},
  {id:"A6",anexo:6,nombre:"Lista de evaluación de controles de seguridad",tecnica:"Evaluación de controles",unidad:"componentes",meta:8,logrado:0,estado:"listo",pop:"P3",aplica:"Investigadores, con evidencia de Informática",muestreo:"Censal",validacion:"No requiere (instrumento temático)"},
  {id:"A5",anexo:5,nombre:"Matriz de riesgos",tecnica:"Evaluación de riesgos · NIST SP 800-30",unidad:"componentes",meta:8,logrado:0,estado:"espera",pop:"P3",aplica:"Investigadores, a partir de los Anexos 3, 4 y 6",muestreo:"Censal",validacion:"No requiere (instrumento temático)",nota:"Se completa en el documento, no en Google Forms."},
@@ -447,7 +449,7 @@ const POP={
  P3:{t:"Componentes tecnológicos",d:"8 (censo): ELOGIC, PACS, LIS, servidores, red y seguridad perimetral"},
  P4:{t:"Personal de Consulta Externa y áreas de apoyo",d:"26 de 124: Médicos (17), Enfermería (5), Archivo (2), Informática (1), Planificación (1)"}
 };
-const ESTADO={recoleccion:"En recolección",validacion:"En validación",listo:"Listo para aplicar",espera:"En espera"};
+const ESTADO={finalizado:"Finalizado",recoleccion:"En recolección",validacion:"En validación",listo:"Listo para aplicar",espera:"En espera"};
 const OBJ=[
  {n:1,corto:"Diagnóstico de la gestión documental",parte:1,apartado:"4.1",marco:"Diagnóstico del proceso actual",
   pregunta:"¿Cuáles son las principales limitaciones del proceso actual de gestión de expedientes clínicos en el Hospital Militar de Honduras que justifican la necesidad de una propuesta de implementación de un sistema de gestión de expedientes electrónicos?",
@@ -623,7 +625,7 @@ document.getElementById("headline").innerHTML=`<div class="lbl">Avance general d
  <div class="foot"><span>Promedio de cobertura de los 6 anexos</span><span>${iniciados} de 6 con registros</span></div>
  <ul class="mini">${byAnexo.map(i=>`<li title="${esc(i.nombre)}"><span>A${i.anexo}</span><i><b style="width:${pct(i)}%"></b></i><em>${Math.round(pct(i))}%</em></li>`).join("")}</ul>`;
 const cnt=s=>INST.filter(i=>i.estado===s).length;
-document.getElementById("states").innerHTML=[["recoleccion","var(--ok)"],["validacion","var(--warn)"],["listo","var(--info)"],["espera","var(--idle)"]]
+document.getElementById("states").innerHTML=[["finalizado","var(--gold)"],["recoleccion","var(--ok)"],["validacion","var(--warn)"],["listo","var(--info)"],["espera","var(--idle)"]]
  .map(([s,c])=>`<div><b>${cnt(s)}</b><span><i style="background:${c}"></i>${ESTADO[s]}</span></div>`).join("");
 document.getElementById("ledger").innerHTML=INST.map(i=>`<div class="row">
   <div class="num">${i.anexo}<small>Anexo</small></div>
@@ -757,7 +759,7 @@ async function cargarDatos(){
     if(pr.length) PREG=pr;
     renderAvance(); paint(); renderG();
     el.textContent="En vivo · última respuesta: "+(corte||"sin fecha");
-  }catch(e){ el.textContent="Datos al 22-10-2026 19:26"; }
+  }catch(e){ el.textContent="Datos al 25-10-2026 11:30"; }
 }
 cargarDatos();
 </script>
